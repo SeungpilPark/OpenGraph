@@ -21903,11 +21903,12 @@ OG.graph.Canvas.prototype = {
 	 * @return {Object}
 	 */
 	getRelatedElementsFromEdge: function (edgeElement) {
-		var edge = OG.Util.isElement(edgeElement) ? edgeElement : this.getElementById(edgeElement),
+		var me = this,
+            edge = OG.Util.isElement(edgeElement) ? edgeElement : this.getElementById(edgeElement),
 			getShapeFromTerminal = function (terminal) {
 				var terminalId = OG.Util.isElement(terminal) ? terminal.id : terminal;
 				if (terminalId) {
-					return this._RENDERER.getElementById(terminalId.substring(0, terminalId.indexOf(OG.Constants.TERMINAL_SUFFIX.GROUP)));
+					return me._RENDERER.getElementById(terminalId.substring(0, terminalId.indexOf(OG.Constants.TERMINAL_SUFFIX.GROUP)));
 				} else {
 					return null;
 				}
@@ -21993,6 +21994,28 @@ OG.graph.Canvas.prototype = {
 	getCustomData: function (shapeElement) {
 		var element = OG.Util.isElement(shapeElement) ? shapeElement : document.getElementById(shapeElement);
 		return element.data;
+	},
+
+	/**
+	 * 주어진 Shape 엘리먼트에 확장 커스텀 데이타를 저장한다.
+	 *
+	 * @param {Element,String} shapeElement Shape DOM Element or ID
+	 * @param {Object} data JSON 포맷의 Object
+	 */
+	setExtCustomData: function (shapeElement, data) {
+		var element = OG.Util.isElement(shapeElement) ? shapeElement : document.getElementById(shapeElement);
+		element.dataExt = data;
+	},
+
+	/**
+	 * 주어진 Shape 엘리먼트에 저장된 확장 커스텀 데이터를 반환한다.
+	 *
+	 * @param {Element,String} shapeElement Shape DOM Element or ID
+	 * @return {Object} JSON 포맷의 Object
+	 */
+	getExtCustomData: function (shapeElement) {
+		var element = OG.Util.isElement(shapeElement) ? shapeElement : document.getElementById(shapeElement);
+		return element.dataExt;
 	},
 
 	/**
@@ -22101,6 +22124,9 @@ OG.graph.Canvas.prototype = {
 				if (item.data) {
 					cell['@data'] = escape(OG.JSON.encode(item.data));
 				}
+				if (item.dataExt) {
+					cell['@dataExt'] = escape(OG.JSON.encode(item.dataExt));
+				}
 
 				jsonObj.opengraph.cell.push(cell);
 
@@ -22110,6 +22136,9 @@ OG.graph.Canvas.prototype = {
 
 		if (rootGroup.data) {
 			jsonObj.opengraph['@data'] = escape(OG.JSON.encode(rootGroup.data));
+		}
+		if (rootGroup.dataExt) {
+			jsonObj.opengraph['@dataExt'] = escape(OG.JSON.encode(rootGroup.dataExt));
 		}
 
 		childShape(rootGroup, true);
@@ -22140,7 +22169,7 @@ OG.graph.Canvas.prototype = {
 		var canvasWidth, canvasHeight, rootGroup,
 			minX = Number.MAX_VALUE, minY = Number.MAX_VALUE, maxX = Number.MIN_VALUE, maxY = Number.MIN_VALUE,
 			i, cell, shape, id, parent, shapeType, shapeId, x, y, width, height, style, geom, from, to,
-			fromEdge, toEdge, label, fromLabel, toLabel, angle, value, data, element;
+			fromEdge, toEdge, label, fromLabel, toLabel, angle, value, data, dataExt, element;
 
 		this._RENDERER.clear();
 
@@ -22149,9 +22178,14 @@ OG.graph.Canvas.prototype = {
 			canvasHeight = json.opengraph['@height'];
 
 			data = json.opengraph['@data'];
+            dataExt = json.opengraph['@dataExt'];
 			if (data) {
 				rootGroup = this.getRootGroup();
 				rootGroup.data = OG.JSON.decode(unescape(data));
+			}
+            if (dataExt) {
+				rootGroup = this.getRootGroup();
+				rootGroup.dataExt = OG.JSON.decode(unescape(dataExt));
 			}
 
 			cell = json.opengraph.cell;
@@ -22177,6 +22211,7 @@ OG.graph.Canvas.prototype = {
 				angle = cell[i]['@angle'];
 				value = cell[i]['@value'];
 				data = cell[i]['@data'];
+				dataExt = cell[i]['@dataExt'];
 
 				label = label ? unescape(label) : label;
 
@@ -22257,6 +22292,9 @@ OG.graph.Canvas.prototype = {
 				}
 				if (data) {
 					element.data = OG.JSON.decode(unescape(data));
+				}
+				if (dataExt) {
+					element.dataExt = OG.JSON.decode(unescape(dataExt));
 				}
 			}
 

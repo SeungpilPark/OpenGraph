@@ -11,11 +11,91 @@
     <!-- included jquery, jquery-ui, jquery.contextmenu, opengraph -->
     <!--<script type="text/javascript" src="../resources/opengraph/OpenGraph-0.1-SNAPSHOT-All.js"></script>-->
 
-    <script type="text/javascript" src="../../resources/opengraph/lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../resources/opengraph/lib/jquery-1.7.2.js"></script>
     <script type="text/javascript"
             src="../../resources/opengraph/lib/ui-lightness/jquery-ui-1.8.19.custom.min.js"></script>
     <script type="text/javascript" src="../../resources/opengraph/lib/contextmenu/jquery.contextMenu-min.js"></script>
-    <script type="text/javascript" src="../../resources/opengraph/OpenGraph-0.1-SNAPSHOT.js"></script>
+    <!--<script type="text/javascript" src="../../resources/opengraph/OpenGraph-0.1-SNAPSHOT.js"></script>-->
+
+    <script type="text/javascript" src="../../resources/opengraph/raphael-2.1.0-custom.js"></script>
+    <script type="text/javascript" src="../../src/common/Constants.js"></script>
+    <script type="text/javascript" src="../../src/common/Util.js"></script>
+    <script type="text/javascript" src="../../src/common/CurveUtil.js"></script>
+    <script type="text/javascript" src="../../src/common/Exceptions.js"></script>
+    <script type="text/javascript" src="../../src/common/HashMap.js"></script>
+    <script type="text/javascript" src="../../src/common/JSON.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Style.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Coordinate.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Envelope.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Geometry.js"></script>
+    <script type="text/javascript" src="../../src/geometry/PolyLine.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Curve.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Ellipse.js"></script>
+    <script type="text/javascript" src="../../src/geometry/BezierCurve.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Circle.js"></script>
+    <script type="text/javascript" src="../../src/geometry/GeometryCollection.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Line.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Point.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Polygon.js"></script>
+    <script type="text/javascript" src="../../src/geometry/Rectangle.js"></script>
+    <script type="text/javascript" src="../../src/shape/IShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/Terminal.js"></script>
+    <script type="text/javascript" src="../../src/shape/GeomShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/TextShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/ImageShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/EdgeShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/CircleShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/EllipseShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/GroupShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/HorizontalLaneShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/HtmlShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/RectangleShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/VerticalLaneShape.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/A_Subprocess.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/A_Task.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/C_Association.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/C_Conditional.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/C_DataAssociation.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/C_Message.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/C_Sequence.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/D_Data.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/D_Store.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Cancel.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Compensation.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Error.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Link.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Message.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_End_Multiple.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Compensation.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Error.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Link.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Message.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Multiple.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Rule.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Intermediate_Timer.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start_Link.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start_Message.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start_Multiple.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start_Rule.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/E_Start_Timer.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/G_Complex.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/G_Exclusive.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/G_Gateway.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/G_Inclusive.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/G_Parallel.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/M_Annotation.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/M_Group.js"></script>
+    <script type="text/javascript" src="../../src/shape/bpmn/M_Text.js"></script>
+    <script type="text/javascript" src="../../src/renderer/IRenderer.js"></script>
+    <script type="text/javascript" src="../../src/renderer/RaphaelRenderer.js"></script>
+    <script type="text/javascript" src="../../src/handler/EventHandler.js"></script>
+    <script type="text/javascript" src="../../src/graph/Canvas.js"></script>
+
+
+
 
     <!-- jquery.layout -->
     <link rel="stylesheet" type="text/css" href="./css/layout-default.css"/>
@@ -74,7 +154,8 @@
 
             // Canvas
             canvas = new OG.Canvas('canvas', [1000, 800], 'white', 'url(./images/grid.gif)');
-            canvas._CONFIG.DEFAULT_STYLE.EDGE["edge-type"] = "bezier";
+            canvas._CONFIG.DEFAULT_STYLE.EDGE["edge-type"] = "plain";
+            //plain , bezier , straight
 
             canvas.initConfig({
                 selectable       : true,
@@ -156,11 +237,19 @@
 
             // examples
             var circleShape = canvas.drawShape([100, 100], new OG.CircleShape(), [100, 100]);
-            var ellipseShape = canvas.drawShape([300, 200], new OG.EllipseShape('label'), [100, 50]);
+            var ellipseShape = canvas.drawShape([200, 400], new OG.EllipseShape('label'), [100, 50]);
 
             // connect
             var edge = canvas.connect(circleShape, ellipseShape);
 
+            var rectangleShape4 = new OG.RectangleShape();
+            var imageShape = new OG.ImageShape('http://static.naver.net/www/u/2010/0611/nmms_215646753.gif', 'label');
+            var textShape1 = new OG.TextShape("Text Here, Hello World!");
+            canvas.drawShape([400, 300], rectangleShape4, [100, 50]);
+            canvas.drawShape([100, 500], imageShape, [150, 50, 45], {'text-anchor': 'middle', 'vertical-align': 'top'});
+            canvas.drawShape([300, 500], textShape1, [200, 100, 45], {'font-size': 10, 'text-anchor': 'start', 'vertical-align': 'middle'});
+
+            canvas.drawShape(null, new OG.EdgeShape([250, 50],[400, 250]));
             // draw label
 //            canvas.drawLabel(circleShape, '라벨');
 //            $(circleShape).children('[id$=_LABEL]').hide();
